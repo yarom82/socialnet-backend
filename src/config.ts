@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import bunyan from 'bunyan';
+import cloudinary from 'cloudinary';
 
 dotenv.config({});
 
@@ -12,6 +13,10 @@ class Config {
   public CLIENT_URL: string | undefined;
   public REDIS_HOST: string | undefined;
 
+  public CLOUDIN_NAME: string | undefined;
+  public CLOUDIN_API_KEY: string | undefined;
+  public CLOUDIN_API_SECRET: string | undefined;
+
   private readonly DEFAULT_DATABASE_URL = 'mongodb://127.0.0.1:27017/socialnet-backend';
 
   constructor() {
@@ -22,6 +27,9 @@ class Config {
     this.SECRET_KEY_TWO = process.env.SECRET_KEY_TWO || '';
     this.CLIENT_URL = process.env.CLIENT_URL || '';
     this.REDIS_HOST = process.env.REDIS_HOST || '';
+    this.CLOUDIN_NAME = process.env.CLOUDIN_NAME || '';
+    this.CLOUDIN_API_KEY = process.env.CLOUDIN_API_KEY || '';
+    this.CLOUDIN_API_SECRET = process.env.CLOUDIN_API_SECRET || '';
   }
 
   public createLogger(name: string): bunyan {
@@ -34,6 +42,14 @@ class Config {
         throw new Error(`Config ${key} is undefined.`);
       }
     }
+  }
+
+  public cloudinaryConfig(): void {
+    cloudinary.v2.config({
+      cloud_name: this.CLOUDIN_NAME,
+      api_key: this.CLOUDIN_API_KEY,
+      api_secret: this.CLOUDIN_API_SECRET
+    });
   }
 }
 
