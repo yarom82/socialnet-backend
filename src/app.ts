@@ -1,8 +1,8 @@
 import express, { Express } from 'express';
 
-import { SocialnetServer } from './setupServer';
-import databaseConnection from './setupDatabase';
-import { config } from './config';
+import { SocialnetServer } from '@root/setupServer';
+import databaseConnection from '@root/setupDatabase';
+import { config } from '@root/config';
 
 class Application {
   public initialize(): void {
