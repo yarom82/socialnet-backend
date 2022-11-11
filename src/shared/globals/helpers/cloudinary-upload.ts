@@ -1,6 +1,6 @@
 import cloudinary, { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
 
-export function upload(
+export function uploads(
   file: string,
   public_id?: string,
   overwrite?: boolean,
