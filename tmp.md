@@ -3,3 +3,6 @@ brew services start redis
 
 for running mongodb
 brew services start mongodb-community@6.0
+
+for running redis
+redis-commander in terminal
