@@ -1,7 +1,7 @@
 import { Application, json, urlencoded, Response, Request, NextFunction } from 'express';
 import http from 'http';
 import cors from 'cors';
-import helmet from 'helmet';
+// import helmet from 'helmet';
 import hpp from 'hpp';
 import compression from 'compression';
 import cookieSession from 'cookie-session';
@@ -44,7 +44,7 @@ export class SocialnetServer {
     );
 
     app.use(hpp());
-    app.use(helmet());
+    // app.use(helmet());
     app.use(
       cors({
         origin: config.CLIENT_URL,
