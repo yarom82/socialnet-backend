@@ -36,32 +36,52 @@ export class UserCache extends BaseCache {
     } = createdUser;
 
     const firstList: string[] = [
-      '_id', `${_id}`,
-      'uId', `${uId}`,
-      'username', `${username}`,
-      'email', `${email}`,
-      'avatarColor', `${avatarColor}`,
-      'postsCount', `${postsCount}`,
-      'createdAt', `${createdAt}`,
+      '_id',
+      `${_id}`,
+      'uId',
+      `${uId}`,
+      'username',
+      `${username}`,
+      'email',
+      `${email}`,
+      'avatarColor',
+      `${avatarColor}`,
+      'postsCount',
+      `${postsCount}`,
+      'createdAt',
+      `${createdAt}`
     ];
 
     const secondList: string[] = [
-      'blocked', JSON.stringify(blocked),
-      'blockedBy', JSON.stringify(blockedBy),
-      'profilePicture', `${profilePicture}`,
-      'followersCount', `${followersCount}`,
-      'followingCount', `${followingCount}`,
-      'notifications', JSON.stringify(notifications),
-      'social', JSON.stringify(social),
+      'blocked',
+      JSON.stringify(blocked),
+      'blockedBy',
+      JSON.stringify(blockedBy),
+      'profilePicture',
+      `${profilePicture}`,
+      'followersCount',
+      `${followersCount}`,
+      'followingCount',
+      `${followingCount}`,
+      'notifications',
+      JSON.stringify(notifications),
+      'social',
+      JSON.stringify(social)
     ];
 
     const thirdList: string[] = [
-      'work', `${work}`,
-      'location', `${location}`,
-      'school', `${school}`,
-      'quote', `${quote}`,
-      'bdImageVersion', `${bgImageVersion}`,
-      'bgImageId', `${bgImageId}`
+      'work',
+      `${work}`,
+      'location',
+      `${location}`,
+      'school',
+      `${school}`,
+      'quote',
+      `${quote}`,
+      'bdImageVersion',
+      `${bgImageVersion}`,
+      'bgImageId',
+      `${bgImageId}`
     ];
 
     const dataToSave: string[] = [...firstList, ...secondList, ...thirdList];
@@ -70,7 +90,7 @@ export class UserCache extends BaseCache {
       if (!this.client.isOpen) {
         await this.client.connect();
       }
-      await this.client.ZADD('user', { score: parseInt(userUId, 10), value: `${key}`});
+      await this.client.ZADD('user', { score: parseInt(userUId, 10), value: `${key}` });
       await this.client.HSET(`users:${key}`, dataToSave);
     } catch (error) {
       log.error(error);

@@ -8,7 +8,7 @@ const log: Logger = config.createLogger('userWorker');
 class UserWorker {
   async addUserToDB(job: Job, done: DoneCallback): Promise<void> {
     try {
-      const {value } = job.data;
+      const { value } = job.data;
       await userService.addUserData(value);
 
       job.progress(100);

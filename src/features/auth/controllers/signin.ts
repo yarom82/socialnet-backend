@@ -23,9 +23,7 @@ export class SignIn {
     if (!passwordMatch) {
       throw new BadRequestError('Invalid credentials');
     }
-    console.log('existingUser._id=' + existingUser._id);
     const user: IUserDocument = await userService.getUserByAuthId(`${existingUser._id}`);
-    console.log('user' + user);
     const userJwt: string = JWT.sign(
       {
         userId: user._id,

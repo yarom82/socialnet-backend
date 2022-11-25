@@ -12,7 +12,7 @@ class AuthQueue extends BaseQueue {
     this.processJob('addAuthUserToDB', 5, authWorker.addAuthUserToDB);
   }
 
-  public addAuthUserJob(name: string, data: IAuthJob) : void {
+  public addAuthUserJob(name: string, data: IAuthJob): void {
     log.info(`addAuthUserJob: name: ${name}`);
     this.addJob(name, data);
   }

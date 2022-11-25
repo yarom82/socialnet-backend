@@ -1,4 +1,3 @@
-
 import { SignIn } from '@auth/controllers/signin';
 import { SignOut } from '@auth/controllers/signout';
 import { SignUp } from '@auth/controllers/signup';
