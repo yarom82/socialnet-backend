@@ -28,6 +28,7 @@ export class SignUp {
     const { username, email, password, avatarColor, avatarImage } = req.body;
     const checkIfUserExist: IAuthDocument = await authService.getUserByUsernameOrEmail(username, email);
     if (checkIfUserExist) {
+      log.error(`user (username: ${username}, email: ${email}) is not exists`);
       throw new BadRequestError('Invalid credentials)');
     }
 
@@ -44,6 +45,7 @@ export class SignUp {
     });
     const result: UploadApiResponse = (await uploads(avatarImage, `${userObjectId}`, true, true)) as UploadApiResponse;
     if (!result?.public_id) {
+      log.error(`Unable to updload avatar image. avatar image path: ${avatarImage}`);
       throw new BadRequestError('File upload: Error occurred. Try again.');
     }
 
