@@ -73,7 +73,7 @@ export class SocialnetServer {
     app.use((error: IErrorResponse, req: Request, res: Response, _next: NextFunction) => {
       log.error(error);
       if (error instanceof CustomError) {
-        return res.status(error.statusCode).json(error.serializeError());
+        return res.status(error.statusCode).json(error.serializeErrors());
       }
     });
   }
