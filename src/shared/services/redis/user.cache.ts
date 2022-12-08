@@ -99,13 +99,13 @@ export class UserCache extends BaseCache {
     }
   }
 
-  public async getUserFromCache(key: string) : Promise<IUserDocument | null> {
+  public async getUserFromCache(key: string): Promise<IUserDocument | null> {
     try {
       if (!this.client.isOpen) {
         await this.client.connect();
       }
 
-      const response: IUserDocument = await this.client.HGETALL(`users:${key}`) as unknown as IUserDocument;
+      const response: IUserDocument = (await this.client.HGETALL(`users:${key}`)) as unknown as IUserDocument;
       response.createdAt = new Date(StringHelpers.parseJson(`${response.createdAt}`));
       response.postsCount = StringHelpers.parseJson(`${response.postsCount}`);
       response.blocked = StringHelpers.parseJson(`${response.blocked}`);

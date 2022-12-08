@@ -7,7 +7,7 @@ import { userService } from '@service/db/user.service';
 const userCache: UserCache = new UserCache();
 
 export class CurrentUser {
-  public async read(req: Request, res: Response) : Promise<void> {
+  public async read(req: Request, res: Response): Promise<void> {
     let isUser = false;
     let token = null;
     let user = null;

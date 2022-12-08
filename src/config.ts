@@ -17,6 +17,11 @@ class Config {
   public CLOUDIN_API_KEY: string | undefined;
   public CLOUDIN_API_SECRET: string | undefined;
 
+  public SENDER_EMAIL: string | undefined;
+  public SENDER_EMAIL_PASSWORD: string | undefined;
+  public SENDGRID_API_KEY: string | undefined;
+  public SENDGRID_SENDER: string | undefined;
+
   private readonly DEFAULT_DATABASE_URL = 'mongodb://127.0.0.1:27017/socialnet-backend';
 
   constructor() {
@@ -30,6 +35,10 @@ class Config {
     this.CLOUDIN_NAME = process.env.CLOUDIN_NAME || '';
     this.CLOUDIN_API_KEY = process.env.CLOUDIN_API_KEY || '';
     this.CLOUDIN_API_SECRET = process.env.CLOUDIN_API_SECRET || '';
+    this.SENDER_EMAIL = process.env.SENDER_EMAIL || '';
+    this.SENDER_EMAIL_PASSWORD = process.env.SENDER_EMAIL_PASSWORD || '';
+    this.SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || '';
+    this.SENDGRID_SENDER = process.env.SENDGRID_SENDER || '';
   }
 
   public createLogger(name: string): bunyan {
