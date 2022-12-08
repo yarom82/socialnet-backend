@@ -10,6 +10,7 @@
     "lint:fix": "eslint 'src/**/*.ts' --fix",
     "prettier:check": "prettier --check 'src/**/*.{ts,json}'",
     "prettier:fix": "prettier --write 'src/**/*.{ts,json}'",
+    "test": "jest --coverage=true -w=50% --forceExit --detectOpenHandles",
     "build": "ttsc -p ."
   },
   "keywords": [],
@@ -18,8 +19,10 @@
   "dependencies": {
     "@bull-board/express": "^4.6.4",
     "@bull-board/ui": "^4.6.4",
+    "@jest/types": "^29.3.1",
     "@sendgrid/mail": "^7.7.0",
     "@socket.io/redis-adapter": "^7.2.0",
+    "@types/jest": "^29.2.4",
     "bcryptjs": "^2.4.3",
     "bull": "^4.10.1",
     "bunyan": "^1.8.15",
@@ -65,7 +68,9 @@
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
+    "jest": "^29.3.1",
     "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.0"
   }
