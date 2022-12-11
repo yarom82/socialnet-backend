@@ -18,7 +18,7 @@ export const authMockResponse = (): Response => {
 };
 
 export interface IJWT {
-  jwt?: string
+  jwt?: string;
 }
 
 export interface IAuthMock {

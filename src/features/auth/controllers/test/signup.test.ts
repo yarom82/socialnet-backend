@@ -14,15 +14,25 @@ jest.mock('@service/redis/user.cache');
 jest.mock('@global/helpers/cloudinary-upload');
 
 describe('SignUp', () => {
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('should throw an error if username is not available', () => {
-    const req: Request = authMockRequest({}, {
-      username: '',
-      email: 'manny@test.com',
-      password: 'qwerty',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: '',
+        email: 'manny@test.com',
+        password: 'qwerty',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -32,13 +42,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if username length is less than minimum length', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'ma',
-      email: 'manny@test.com',
-      password: 'qwerty',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'ma',
+        email: 'manny@test.com',
+        password: 'qwerty',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -48,13 +61,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if username length is greater than minimum length', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'mathematics',
-      email: 'manny@test.com',
-      password: 'qwerty',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'mathematics',
+        email: 'manny@test.com',
+        password: 'qwerty',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -64,13 +80,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if email is not valid', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'Manny',
-      email: 'not valid email',
-      password: 'qwerty',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'Manny',
+        email: 'not valid email',
+        password: 'qwerty',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -80,13 +99,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if email is not available', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'Manny',
-      email: '',
-      password: 'qwerty',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'Manny',
+        email: '',
+        password: 'qwerty',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -96,13 +118,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if password is not available', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'Manny',
-      email: 'manny@test.com',
-      password: '',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'Manny',
+        email: 'manny@test.com',
+        password: '',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -112,13 +137,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if password length is less than minimum length', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'Manny',
-      email: 'manny@test.com',
-      password: 'qw',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'Manny',
+        email: 'manny@test.com',
+        password: 'qw',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -128,13 +156,16 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if password length is greater than minimum length', () => {
-    const req: Request = authMockRequest({}, {
-      username: 'Manny',
-      email: 'manny@test.com',
-      password: 'qwertyqwertyqwerty',
-      avatarColor: 'red',
-      avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
-    }) as Request;
+    const req: Request = authMockRequest(
+      {},
+      {
+        username: 'Manny',
+        email: 'manny@test.com',
+        password: 'qwertyqwertyqwerty',
+        avatarColor: 'red',
+        avatarImage: 'data:text/plain;base64,SGVsbG8ssIFdvcmxkIQ=='
+      }
+    ) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -144,7 +175,9 @@ describe('SignUp', () => {
   });
 
   it('should throw unauthorized error if user already exists', () => {
-    const req: Request = authMockRequest({}, {
+    const req: Request = authMockRequest(
+      {},
+      {
         username: 'Manny',
         email: 'manny@test.com',
         password: 'qwerty',
@@ -162,7 +195,9 @@ describe('SignUp', () => {
   });
 
   it('should set session data for valid credentials and send correct json response', async () => {
-    const req: Request = authMockRequest({}, {
+    const req: Request = authMockRequest(
+      {},
+      {
         username: 'Manny',
         email: 'manny@test.com',
         password: 'qwerty',
@@ -174,7 +209,7 @@ describe('SignUp', () => {
 
     jest.spyOn(authService, 'getUserByUsernameOrEmail').mockResolvedValue(null as any);
     const userSpy = jest.spyOn(UserCache.prototype, 'saveUserToCache');
-    jest.spyOn(cloudinaryUploads, 'uploads').mockImplementation((): any => Promise.resolve({ version: '12345623', public_id: '123456'}));
+    jest.spyOn(cloudinaryUploads, 'uploads').mockImplementation((): any => Promise.resolve({ version: '12345623', public_id: '123456' }));
 
     await SignUp.prototype.create(req, res);
     expect(req.session?.jwt).toBeDefined();
